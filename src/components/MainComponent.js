@@ -4,8 +4,9 @@ import CampsiteInfo from './CampsiteInfoComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import { Switch, Route, Redirect} from 'react-router-dom';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
+import { Switch, Route, Redirect} from 'react-router-dom';
 import { CAMPSITES } from '../shared/campsites';
 import { COMMENTS } from '../shared/comments';
 import { PARTNERS } from '../shared/partners';
@@ -25,7 +26,6 @@ class Main extends Component {
     }
 
    
-
     render() {
         const HomePage = () => {
             return (
@@ -56,7 +56,8 @@ class Main extends Component {
                     <Route path = '/home' component = {HomePage} />
                     <Route exact path = '/directory' render ={() => <Directory campsites={this.state.campsites}/>}/>
                     <Route path = '/directory/:campsiteId' component = {CampsiteWithId}/>
-                    <Route exact path='/contactus' component ={Contact} />
+                    <Route exact path ='/contactus' component ={Contact} />
+                    <Route path ='/aboutus' render ={() => <About partners={this.state.partners}/>}/> 
                     <Redirect to ='/home' />
                 </Switch>
                 <Footer/>
